@@ -58,7 +58,7 @@ nav.scrolled {
 
 .social-links {
     display: flex;
-    gap: 0.42px;
+    gap: 32px;
     align-items: center;
     margin-right: 0;
 }
@@ -73,7 +73,6 @@ nav.scrolled {
     justify-content: center;
     width: 32px;
     height: 32px;
-    padding: 4.2px;
 }
 
 .social-links a:hover {
@@ -602,4 +601,129 @@ section {
     opacity: 1;
     color: #fff;
     margin: 0.5em 0;
+}
+
+.hamburger-menu {
+    width: 24px;
+    height: 18px;
+    cursor: pointer;
+    z-index: 1001;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.hamburger-menu .line {
+    width: 100%;
+    height: 1.5px;
+    background-color: var(--text-color);
+    transition: all 0.6s cubic-bezier(0.645, 0.045, 0.355, 1);
+    transform-origin: center;
+}
+
+.hamburger-menu.active .line:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+}
+
+.hamburger-menu.active .line:nth-child(2) {
+    opacity: 0;
+    transform: scaleX(0);
+}
+
+.hamburger-menu.active .line:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+}
+
+.nav-panel {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 340px;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.98);
+    z-index: 1000;
+    transition: all 0.6s cubic-bezier(0.645, 0.045, 0.355, 1);
+    backdrop-filter: blur(10px);
+}
+
+.nav-panel.active {
+    right: 0;
+}
+
+.nav-content {
+    padding: 80px 40px 40px;
+    color: var(--text-color);
+    position: relative;
+}
+
+.nav-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}
+
+.nav-close .line {
+    position: absolute;
+    width: 24px;
+    height: 1.5px;
+    background-color: var(--text-color);
+    transition: all 0.3s ease;
+}
+
+.nav-close .line:first-child {
+    transform: rotate(45deg);
+}
+
+.nav-close .line:last-child {
+    transform: rotate(-45deg);
+}
+
+.nav-close:hover .line {
+    opacity: 0.7;
+}
+
+.nav-header {
+    font-size: 42px;
+    font-weight: normal;
+    margin-bottom: 48px;
+    font-family: var(--font-family-headers);
+    letter-spacing: 0.5px;
+}
+
+.nav-links {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+}
+
+.nav-link {
+    color: var(--text-color);
+    text-decoration: none;
+    font-size: 18px;
+    padding: 16px 0;
+    transition: all 0.3s ease;
+    opacity: 0.85;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    letter-spacing: 0.3px;
+    font-weight: 300;
+    text-align: right;
+}
+
+.nav-link:hover {
+    color: var(--text-color);
+    opacity: 1;
+}
+
+@media screen and (max-width: 768px) {
+    .nav-panel {
+        width: 100%;
+    }
 }
