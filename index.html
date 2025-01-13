@@ -58,8 +58,28 @@
             <a href="https://linkedin.com/in/rashadahmadov" target="_blank" aria-label="LinkedIn">
                 <i class="fab fa-linkedin fa-xl"></i>
             </a>
+            <div class="hamburger-menu">
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+            </div>
         </div>
     </nav>
+
+    <div class="nav-panel">
+        <div class="nav-content">
+            <div class="nav-close">
+                <div class="line"></div>
+                <div class="line"></div>
+            </div>
+            <div class="nav-links">
+                <a href="/projects/process-engineering.html" class="nav-link">Process Engineering</a>
+                <a href="/projects/electric-reactor.html" class="nav-link">Electric Reactor</a>
+                <a href="/projects/simulation.html" class="nav-link">Process Simulation</a>
+                <a href="/projects/optimization.html" class="nav-link">Optimization Projects</a>
+            </div>
+        </div>
+    </div>
 
     <section id="hero" class="hero-section">
         <div class="hero-content">
@@ -115,35 +135,24 @@
     </section>
 
     <section id="projects">
-        <div class="project-banner" 
+        <a href="/projects/process-engineering.html" class="project-banner" 
             style="background-image: url('assets/imgs/petrochemical.webp');" 
             data-bg="assets/imgs/petrochemical.webp"
-            loading="lazy"
-            data-description="Worked in petrochemical plants and a refinery. Troubleshot several heat exchanger issues, optimized compressors operations, and reworked reactor operations to avoid downtime. Learn fast, move fast, and deliver solutions, make a difference.
-            At an edtech company, built detailed equipment design tools and manuals for heat exchangers, pumps, compressors, valves and distillation/separation columns."
-            data-tech="Aspen Plus, Aspen HYSYS, Python, CAD, P&IDs, PFDs">
+            loading="lazy">
             <div class="text-line"><h3>Process Engineering</h3></div>
-        </div>
-        <div class="project-banner" 
-            style="background-image: url('assets/imgs/electricreactor.webp');" 
-            data-description="Designed and built a Joule heating electric reactor from scratch - CAD to lab prototype. To produce methanol and run catalytic reactions, developed a methodology to deposit catalyst. From 0 to 1."
-            data-tech="Control Systems, CAD, Python, Process Simulation, Hardware">
+        </a>
+        <a href="/projects/electric-reactor.html" class="project-banner" 
+            style="background-image: url('assets/imgs/electricreactor.webp');">
             <div class="text-line"><h3>Electric Reactor</h3></div>
-        </div>
-        <div class="project-banner"
-            style="background-image: url('assets/imgs/guide.webp');"
-            data-description="	Wrote an introductory Aspen HYSYS guide for Che273 Process Design. Available here soon."
-            data-tech="Aspen Plus, Aspen HYSYS,Process Design">
-            <div class="text-line"><h3>Author of Process Simulation guide</h3></div>
-        </div>
-        <div class="project-banner" 
-            style="background-image: url('assets/imgs/speedcost.webp');" 
-            data-description="As I mentioned, do not accept things as they are. Built internal software to cut raw data to analysis/presentation-ready time from 8-10 mins to less than a second. 
-            Fixed BET equipment quoted at $10000 for ~$500 - 20x cost reduction.
-            More tools en route."
-            data-tech="Python, Docker, Git, Hardware">
-            <div class="text-line"><h3>Speeding & Cutting Costs</h3></div>
-        </div>
+        </a>
+        <a href="/projects/simulation.html" class="project-banner"
+            style="background-image: url('assets/imgs/guide.webp');">
+            <div class="text-line"><h3>Process Simulation</h3></div>
+        </a>
+        <a href="/projects/optimization.html" class="project-banner" 
+            style="background-image: url('assets/imgs/speedcost.webp');">
+            <div class="text-line"><h3>Optimization Projects</h3></div>
+        </a>
     </section>
 
     <div id="project-modal" class="modal">
