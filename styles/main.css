@@ -101,11 +101,40 @@ section {
 }
 
 #hero {
-    background: url('../assets/imgs/fuseshot.jpg') no-repeat center center/cover;
+    background: url('../assets/imgs/icf.gif') no-repeat center center/cover;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    position: relative;
+}
+
+#hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(
+        circle at center,
+        rgba(255, 69, 0, 0.8) 0%,
+        rgba(255, 0, 0, 0.4) 25%,
+        rgba(0, 0, 0, 0.407) 50% 
+    ),
+    linear-gradient(135deg, 
+        rgba(255, 0, 0, 0.722),
+        rgba(0, 0, 0, 0.688)
+    );
+    mix-blend-mode: hard-light;
+    z-index: 1;
+}
+
+.hero-content {
+    text-align: center;
+    z-index: 2;
+    position: relative;
+    transform: none;
 }
 
 .hero-content h1 {
@@ -173,13 +202,6 @@ section {
     min-height: 100%;
     width: auto;
     height: auto;
-}
-
-.hero-content {
-    text-align: center;
-    z-index: 2;
-    position: relative;
-    transform: none;
 }
 
 .hero-content.visible {
@@ -485,7 +507,7 @@ section {
 }
 
 #about {
-    background-image: url('../assets/imgs/nif_omega.jpg');
+    background-image: url('../assets/imgs/icf.gif');
     background-size: cover;
     background-position: center;
     position: relative;
