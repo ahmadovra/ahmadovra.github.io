@@ -58,6 +58,9 @@
             <a href="https://linkedin.com/in/rashadahmadov" target="_blank" aria-label="LinkedIn">
                 <i class="fab fa-linkedin fa-xl"></i>
             </a>
+            <a href="#" id="contact-link" aria-label="Contact">
+                <i class="far fa-envelope fa-xl"></i>
+            </a>
             <div class="hamburger-menu">
                 <div class="line"></div>
                 <div class="line"></div>
@@ -163,6 +166,27 @@
                 <p id="modal-description"></p>
                 <div class="project-tech" id="modal-tech"></div>
             </div>
+        </div>
+    </div>
+
+    <div id="contact-modal" class="modal">
+        <div class="modal-content contact-modal">
+            <div class="nav-close modal-close">
+                <div class="line"></div>
+                <div class="line"></div>
+            </div>
+            <form action="https://formspree.io/f/xbllvowd" method="POST" id="contact-form">
+                <div class="form-group">
+                    <input type="text" name="name" required placeholder="Name">
+                </div>
+                <div class="form-group">
+                    <input type="email" name="email" required placeholder="Email">
+                </div>
+                <div class="form-group">
+                    <textarea name="message" required placeholder="Message" rows="5"></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Send Message</button>
+            </form>
         </div>
     </div>
 

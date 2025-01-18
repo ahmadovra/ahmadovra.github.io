@@ -155,3 +155,59 @@ document.addEventListener('click', (e) => {
         closeNav();
     }
 });
+
+const contactLink = document.getElementById('contact-link');
+const contactModal = document.getElementById('contact-modal');
+const contactForm = document.getElementById('contact-form');
+const modalClose = document.querySelector('.modal-close');
+
+contactLink.addEventListener('click', (e) => {
+    e.preventDefault();
+    contactModal.classList.add('active');
+});
+
+modalClose.addEventListener('click', () => {
+    contactModal.classList.remove('active');
+});
+
+window.addEventListener('click', (e) => {
+    if (e.target === contactModal) {
+        contactModal.classList.remove('active');
+    }
+});
+
+contactForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const submitBtn = contactForm.querySelector('.submit-btn');
+    const originalText = submitBtn.textContent;
+    submitBtn.textContent = 'Sending...';
+    submitBtn.disabled = true;
+
+    try {
+        const response = await fetch(contactForm.action, {
+            method: 'POST',
+            body: new FormData(contactForm),
+            headers: {
+                'Accept': 'application/json'
+            }
+        });
+
+        if (response.ok) {
+            contactForm.reset();
+            submitBtn.textContent = 'Message Sent!';
+            setTimeout(() => {
+                contactModal.classList.remove('active');
+                submitBtn.textContent = originalText;
+                submitBtn.disabled = false;
+            }, 2000);
+        } else {
+            throw new Error('Failed to send message');
+        }
+    } catch (error) {
+        submitBtn.textContent = 'Failed to send';
+        setTimeout(() => {
+            submitBtn.textContent = originalText;
+            submitBtn.disabled = false;
+        }, 3000);
+    }
+});
