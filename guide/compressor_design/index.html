@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Compressor Design Guide - Understanding Surge, Stonewall, and Implementation in Aspen HYSYS">
+    <title>Compressor Design Guide - Rashad Ahmadov</title>
+    <link rel="stylesheet" href="../../styles/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="../../styles/animations.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.0/dist/aos.css">
+    <style>
+        .guide-content {
+            max-width: 800px;
+            margin: 120px auto 40px;
+            padding: 20px;
+            color: #fff;
+        }
+        .guide-content img {
+            max-width: 100%;
+            height: auto;
+            margin: 20px 0;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        .guide-content h1, .guide-content h2, .guide-content h3 {
+            color: #fff;
+            margin-top: 30px;
+        }
+        .guide-content p {
+            line-height: 1.6;
+            margin: 15px 0;
+        }
+        .guide-content ol, .guide-content ul {
+            margin: 15px 0;
+            padding-left: 20px;
+        }
+        .guide-content li {
+            margin: 10px 0;
+        }
+        .step {
+            margin-bottom: 40px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+        }
+        .back-to-guides {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #fff;
+            text-decoration: none;
+            padding: 8px 16px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 6px;
+            transition: background 0.3s ease;
+        }
+        .back-to-guides:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        th {
+            background: rgba(255, 255, 255, 0.1);
+            font-weight: bold;
+        }
+        tr:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="guide-content">
+        <a href="../" class="back-to-guides">← Back to Guides</a>
+        
+        <h1>Compressor Design using HYSYS</h1>
+
+        <h3>What is compressor surge and stonewall?</h3>
+        <h3>Difference between Adiabatic and Polytropic Efficiency</h3>
+
+        <h2>Installing compressor in HYSYS</h2>
+        <p>Dive deep into HYSYS. Let's build an Export Gas compressor together.</p>
+        
+        <div class="step">
+            <h4>1. Add Compressor to Flowsheet</h4>
+            <p>Drag and drop compressor to the flowsheet and define the inlet, outlet and energy streams:</p>
+            <img src="../../assets/che273_guide_imgs/Compressor design/Untitled.png" alt="Adding compressor to flowsheet">
+        </div>
+
+        <div class="step">
+            <h4>2. Configure Compressor Curves</h4>
+            <p>Head to the rating tab to add performance curves:</p>
+            <img src="../../assets/che273_guide_imgs/Compressor design/Untitled 1.png" alt="Compressor rating configuration">
+        </div>
+
+        <h3>Centrifugal Compressor Curve Data</h3>
+        
+        <h4>At speed 5000 rpm</h4>
+        <table>
+            <tr>
+                <th>Volume Flow (ACT_m3/h)</th>
+                <th>Head</th>
+                <th>Efficiency %</th>
+            </tr>
+            <tr><td>5800</td><td>9800</td><td>70</td></tr>
+            <tr><td>6200</td><td>9600</td><td>70.7</td></tr>
+            <tr><td>6600</td><td>9200</td><td>71.50</td></tr>
+            <tr><td>7000</td><td>8800</td><td>73</td></tr>
+            <tr><td>7400</td><td>8400</td><td>72.50</td></tr>
+            <tr><td>7800</td><td>7700</td><td>71.30</td></tr>
+            <tr><td>8200</td><td>7000</td><td>71</td></tr>
+            <tr><td>8600</td><td>6200</td><td>70.2</td></tr>
+        </table>
+
+        <h4>At speed 7500 rpm</h4>
+        <table>
+            <tr>
+                <th>Volume Flow (ACT_m3/h)</th>
+                <th>Head (m)</th>
+                <th>Efficiency %</th>
+            </tr>
+            <tr><td>8300</td><td>12000</td><td>69</td></tr>
+            <tr><td>8800</td><td>11800</td><td>68.50</td></tr>
+            <tr><td>9300</td><td>11400</td><td>70</td></tr>
+            <tr><td>9800</td><td>11000</td><td>71.3</td></tr>
+            <tr><td>10300</td><td>10600</td><td>72</td></tr>
+            <tr><td>10800</td><td>9900</td><td>71</td></tr>
+            <tr><td>11300</td><td>9200</td><td>70.5</td></tr>
+            <tr><td>11800</td><td>8400</td><td>68.9</td></tr>
+        </table>
+
+        <h4>At speed 10000 rpm</h4>
+        <table>
+            <tr>
+                <th>Volume Flow (ACT_m3/h)</th>
+                <th>Head (m)</th>
+                <th>Efficiency %</th>
+            </tr>
+            <tr><td>8700</td><td>14500</td><td>69.50</td></tr>
+            <tr><td>9200</td><td>14300</td><td>70.8</td></tr>
+            <tr><td>9700</td><td>13900</td><td>71.5</td></tr>
+            <tr><td>10200</td><td>13500</td><td>72.4</td></tr>
+            <tr><td>10700</td><td>13100</td><td>73.6</td></tr>
+            <tr><td>11200</td><td>12400</td><td>72.2</td></tr>
+            <tr><td>11700</td><td>11700</td><td>71.2</td></tr>
+            <tr><td>12200</td><td>10900</td><td>70.5</td></tr>
+        </table>
+
+        <div class="step">
+            <h4>3. Configure Operating Conditions</h4>
+            <p>After adding all curves, make sure that they are enabled. To operate your compressor, either you can define the desired output pressure or rotation per minute (rpm) or compressor duty. In this case, required output delivery pressure - 70 bars - is defined.</p>
+            <img src="../../assets/che273_guide_imgs/Compressor design/Untitled 2.png" alt="Operating conditions configuration">
+            <p>Eventually you can plot performance curves and check if your operation condition is within the acceptable range.</p>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.0/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
+</body>
+</html> 

@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Process Simulation Guide - Refrigeration Loop in Aspen HYSYS">
+    <title>Process Simulation Guide - Rashad Ahmadov</title>
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="../../../styles/animations.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.0/dist/aos.css">
+    <style>
+        .guide-content {
+            max-width: 800px;
+            margin: 120px auto 40px;
+            padding: 20px;
+            color: #fff;
+        }
+        .guide-content img {
+            max-width: 100%;
+            height: auto;
+            margin: 20px 0;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        .guide-content h1, .guide-content h2, .guide-content h3 {
+            color: #fff;
+            margin-top: 30px;
+        }
+        .guide-content p {
+            line-height: 1.6;
+            margin: 15px 0;
+        }
+        .guide-content ol, .guide-content ul {
+            margin: 15px 0;
+            padding-left: 20px;
+        }
+        .guide-content li {
+            margin: 10px 0;
+        }
+        .step {
+            margin-bottom: 40px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+        }
+        .back-to-guides {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #fff;
+            text-decoration: none;
+            padding: 8px 16px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 6px;
+            transition: background 0.3s ease;
+        }
+        .back-to-guides:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="guide-content">
+        <a href="../" class="back-to-guides">← Back to Guides</a>
+        
+        <h1>Process Simulation Guide: Refrigeration Loop</h1>
+        
+        <h3>Welcome to your first Aspen HYSYS guide!</h3>
+        <p>In this guide, we'll walk through building a simulation of a refrigeration loop.</p>
+
+        <h3>Problem Statement</h3>
+        <p>125 kmol/hr propane is fed to an evaporator where it absorbs heat from a high performance computing room at a rate of 1.5e+6 kJ/hr. The exiting propane stream from the evaporator is adiabatically compressed with 70% efficiency and then fed to the condenser to eject heat from the system. Propane leaves the condenser as a saturated liquid at 45 degrees C and undergoes valve expansion to 302 kPa. The low pressure propane is fed back to the evaporator, completing the refrigeration cycle.</p>
+        <p>The evaporator and condenser pressure drops are 5 kPa and 30 kPa, respectively.</p>
+
+        <h3>Step-by-Step Guide</h3>
+        
+        <div class="step">
+            <h4>1. Open a new project</h4>
+            <img src="../../../assets/che273_guide_imgs/Refrigeration loop/Untitled.png" alt="New Project in Aspen HYSYS">
+        </div>
+
+        <div class="step">
+            <h4>2. Add propane as the component to the system</h4>
+            <img src="../../../assets/che273_guide_imgs/Refrigeration loop/Untitled 1.png" alt="Adding propane component">
+        </div>
+
+        <div class="step">
+            <h4>3. Choose the Peng-Robinson equation of state as the fluid package</h4>
+            <img src="../../../assets/che273_guide_imgs/Refrigeration loop/Untitled 2.png" alt="Selecting Peng-Robinson equation">
+        </div>
+
+        <div class="step">
+            <h4>4. Set up the Model Palette</h4>
+            <p>Back on the home screen, locate the Model Palette under Flowsheet/Modify. Then open the Model and Streams palette as shown below.</p>
+            <img src="../../../assets/che273_guide_imgs/Refrigeration loop/Untitled 3.png" alt="Model Palette setup">
+            <img src="../../../assets/che273_guide_imgs/Refrigeration loop/Untitled 4.png" alt="Model and Streams palette">
+        </div>
+
+        <div class="step">
+            <h4>5. Configure stream compositions</h4>
+            <p>Make sure that after adding your first stream, you have defined the Composition. Since propane is the only component in your process, the propane mole fraction is one.</p>
+            <img src="../../../assets/che273_guide_imgs/Refrigeration loop/composition.png" alt="Stream composition setup">
+        </div>
+
+        <div class="step">
+            <h4>6. Add the Recycle Block</h4>
+            <p>Depending on different process simulations, you may need to add the Recycle Block to your flowsheet. This installs a theoretical block in the process stream to solve recycle loops, hence allowing the simulation to converge.</p>
+            <img src="../../../assets/che273_guide_imgs/Refrigeration loop/recycle.png" alt="Adding Recycle Block">
+        </div>
+
+        <div class="step">
+            <h4>7. Configure equipment and connections</h4>
+            <p>Once you have added the necessary four pieces of equipment into the flowsheet, double-click each piece of equipment for more details and specifications. You will need to modify the settings to input all of the given information from the problem statement and connect the pieces together in the proper order.</p>
+            <p>For example, double-click VLV-100, to rename the inlet/outlet streams. The streams can also be re-assigned to adjacent pieces of equipment to make the appropriate connections.</p>
+            <img src="../../../assets/che273_guide_imgs/Refrigeration loop/Untitled 5.png" alt="Equipment configuration">
+        </div>
+
+        <div class="step">
+            <h4>8. Review the flowsheet</h4>
+            <p>Your updated flowsheet may slightly vary in appearance to the example below, but should include the same streams, equipment and sequence of steps. The button "Auto Position All" can be used to adjust the layout:</p>
+            <img src="../../../assets/che273_guide_imgs/Refrigeration loop/Untitled 6.png" alt="Complete flowsheet">
+        </div>
+
+        <div class="step">
+            <h4>9. Run the simulation</h4>
+            <p>If you double-click each piece of equipment, you should see the green "OK" indicator. Click Active on the home screen to run the simulation. Confirmation that the system is running is indicated by the color change to dark blue streams and equipment outlines.</p>
+            <img src="../../../assets/che273_guide_imgs/Refrigeration loop/Untitled 7.png" alt="Running simulation">
+        </div>
+
+        <div class="step">
+            <h4>Solution</h4>
+            <p>To see all your flowsheet streams together click Workbook from the ribbon.</p>
+            <img src="../../../assets/che273_guide_imgs/Refrigeration loop/Untitled 8.png" alt="Workbook view">
+            <p>Material streams specifications:</p>
+            <img src="../../../assets/che273_guide_imgs/Refrigeration loop/Untitled 9.png" alt="Material streams specifications">
+        </div>
+
+        <h3>Questions for Understanding</h3>
+        <ul>
+            <li>What is happening in the system? Can you walk through and explain the four steps of a refrigeration loop?</li>
+            <li>Can you define a specific utility for condenser or evaporator? Try and find out.</li>
+            <li>Why is Peng-Robinson an appropriate equation of state for propane?</li>
+        </ul>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.0/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
+</body>
+</html> 

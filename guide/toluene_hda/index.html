@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Toluene Hydrodealkylation (HDA) Process Simulation Guide">
+    <title>Toluene HDA Guide - Rashad Ahmadov</title>
+    <link rel="stylesheet" href="../../styles/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="../../styles/animations.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.0/dist/aos.css">
+    <style>
+        .guide-content {
+            max-width: 800px;
+            margin: 120px auto 40px;
+            padding: 20px;
+            color: #fff;
+            counter-reset: step-counter;
+        }
+        .guide-content img {
+            max-width: 100%;
+            height: auto;
+            margin: 20px 0;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        .guide-content h1, .guide-content h2, .guide-content h3 {
+            color: #fff;
+            margin-top: 30px;
+        }
+        .guide-content p {
+            line-height: 1.6;
+            margin: 15px 0;
+        }
+        .guide-content ol, .guide-content ul {
+            margin: 15px 0;
+            padding-left: 20px;
+        }
+        .guide-content li {
+            margin: 10px 0;
+        }
+        .step {
+            margin-bottom: 40px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            position: relative;
+        }
+        .step h4 {
+            counter-increment: step-counter;
+        }
+        .step h4::before {
+            content: counter(step-counter) ". ";
+        }
+        .back-to-guides {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #fff;
+            text-decoration: none;
+            padding: 8px 16px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 6px;
+            transition: background 0.3s ease;
+        }
+        .back-to-guides:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        th {
+            background: rgba(255, 255, 255, 0.1);
+            font-weight: bold;
+        }
+        tr:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+        .equation {
+            text-align: center;
+            font-family: 'Times New Roman', serif;
+            font-size: 1.2em;
+            margin: 20px 0;
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="guide-content">
+        <a href="../" class="back-to-guides">← Back to Guides</a>
+        
+        <h1>Toluene HDA Process Simulation Guide</h1>
+        
+        <h2>Welcome to Toluene Hydrodealkylation guide!</h2>
+        <p>This guide will help you simulate the Toluene Hydrodealkylation process in HYSYS, including the conversion of toluene to benzene. You will learn about the flowsheet and equipment data, and how to use shortcut distillation columns to build T-101 and T-102.</p>
+
+        <h2>Problem Statement</h2>
+        <p>This process simulation is about <strong>Toluene Dehyroalkylation (HDA)</strong>. The toluene dehydroalkylation process involves the conversion of toluene to benzene and methane, benzene being the desired product. However, another side reaction occurs which is conversion of benzene to biphenyl. The primary reaction operates at 98% conversion and the side reaction is at 2% conversion.</p>
+
+        <div class="equation">
+            C₇H₈ + H₂ → C₆H₆ + CH₄
+        </div>
+        <div class="equation">
+            2C₆H₆ → C₁₂H₁₀ + H₂
+        </div>
+
+        <h2>Flowsheet</h2>
+        <img src="../../../assets/che273_guide_imgs/Toluene HDA/Untitled.png" alt="Process Flowsheet">
+
+        <h2>Properties Environment Setup</h2>
+        
+        <div class="step">
+            <h4>Component Selection</h4>
+            <p>Open new project and add the components from problem statement.</p>
+            <img src="../../../assets/che273_guide_imgs/Toluene HDA/Untitled 1.png" alt="Component selection">
+        </div>
+
+        <div class="step">
+            <h4>Reaction Setup</h4>
+            <p>Add reactions to your process system.</p>
+            <img src="../../../assets/che273_guide_imgs/Toluene HDA/Untitled 2.png" alt="Reaction setup">
+            <img src="../../../assets/che273_guide_imgs/Toluene HDA/rxn_set.png" alt="Reaction set configuration">
+            <img src="../../../assets/che273_guide_imgs/Toluene HDA/rxn_conversion.png" alt="Reaction conversion">
+        </div>
+
+        <div class="step">
+            <h4>Configure First Reaction</h4>
+            <p>After adding first reaction (toluene to benzene), specify the conversion (98%) and stoichiometry.</p>
+            <img src="../../../assets/che273_guide_imgs/Toluene HDA/Untitled 3.png" alt="First reaction configuration">
+        </div>
+
+        <div class="step">
+            <h4>Configure Second Reaction</h4>
+            <p>Verify the second reaction configuration.</p>
+            <img src="../../../assets/che273_guide_imgs/Toluene HDA/Untitled 4.png" alt="Second reaction configuration">
+        </div>
+
+        <div class="step">
+            <h4>Reaction Ranking</h4>
+            <p>Define the Ranking of reactions and attach reaction set to fluid package.</p>
+            <img src="../../../assets/che273_guide_imgs/Toluene HDA/Untitled 5.png" alt="Reaction ranking">
+            <img src="../../../assets/che273_guide_imgs/Toluene HDA/Untitled 6.png" alt="Reaction order setup">
+        </div>
+
+        <h2>Simulation Environment</h2>
+
+        <div class="step">
+            <h4>Initial Stream Setup</h4>
+            <p>Add first two streams to flowsheet and define their composition and conditions:</p>
+            <img src="../../../assets/che273_guide_imgs/Toluene HDA/Untitled 7.png" alt="Initial streams">
+            
+            <h5>Stream Conditions</h5>
+            <table>
+                <tr>
+                    <th>Streams</th>
+                    <th>T [°C]</th>
+                    <th>P [kPa]</th>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>25</td>
+                    <td>190</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>25</td>
+                    <td>2550</td>
+                </tr>
+            </table>
+
+            <h5>Stream Compositions</h5>
+            <table>
+                <tr>
+                    <th>Compounds</th>
+                    <th>S1 [kmol/hr]</th>
+                    <th>S2 [kmol/hr]</th>
+                </tr>
+                <tr><td>Hydrogen</td><td>0</td><td>286</td></tr>
+                <tr><td>Methane</td><td>0</td><td>15</td></tr>
+                <tr><td>Benzene</td><td>0</td><td>0</td></tr>
+                <tr><td>Toluene</td><td>108.7</td><td>0</td></tr>
+                <tr><td>Biphenyl</td><td>0</td><td>0</td></tr>
+                <tr><td>N2</td><td>0</td><td>0</td></tr>
+                <tr><td>O2</td><td>0</td><td>0</td></tr>
+                <tr><td>H2O</td><td>0</td><td>0</td></tr>
+                <tr><td>CO2</td><td>0</td><td>0</td></tr>
+                <tr><td>CO</td><td>0</td><td>0</td></tr>
+            </table>
+        </div>
+
+        <div class="step">
+            <h4>Separator Installation</h4>
+            <p>Install separator for toluene inlet to ensure no gas enters the pump.</p>
+            <img src="../../../assets/che273_guide_imgs/Toluene HDA/Untitled 8.png" alt="Separator installation">
+        </div>
+
+        <div class="step">
+            <h4>Pump Configuration</h4>
+            <p>Add pump and set outlet pressure to 25.80 bars.</p>
+            <img src="../../../assets/che273_guide_imgs/Toluene HDA/Untitled 9.png" alt="Pump setup">
+            <img src="../../../assets/che273_guide_imgs/Toluene HDA/Untitled 10.png" alt="Pump pressure configuration">
+        </div>
+
+        <div class="step">
+            <h4>Mixer Setup</h4>
+            <p>Add two mixers (tees/joints). Note: Do not add recycle streams yet.</p>
+            <img src="../../../assets/che273_guide_imgs/Toluene HDA/Untitled 11.png" alt="Mixer setup">
+        </div>
+
+        <div class="step">
+            <h4>Pre-heater Configuration</h4>
+            <p>Add pre-heater to heat the mix to 225°C. Set ΔP = 30 kPa.</p>
+            <img src="../../../assets/che273_guide_imgs/Toluene HDA/Untitled 12.png" alt="Pre-heater setup">
+        </div>
+
+        <div class="step">
+            <h4>Furnace Setup</h4>
+            <p>Add fired heater and configure the radiative zone. Define air, fuel, and flue gas streams.</p>
+            <img src="../../../assets/che273_guide_imgs/Toluene HDA/Untitled 13.png" alt="Furnace setup">
+            <img src="../../../assets/che273_guide_imgs/Toluene HDA/Untitled 14.png" alt="Furnace efficiency settings">
+
+            <h5>Air and Fuel Compositions</h5>
+            <table>
+                <tr>
+                    <th>Compounds</th>
+                    <th>Air</th>
+                    <th>Fuel</th>
+                </tr>
+                <tr><td>Hydrogen</td><td>0</td><td>0.2</td></tr>
+                <tr><td>Methane</td><td>0</td><td>0.8</td></tr>
+                <tr><td>N2</td><td>0.79</td><td>0</td></tr>
+                <tr><td>O2</td><td>0.21</td><td>0</td></tr>
+            </table>
+
+            <h5>Stream Conditions</h5>
+            <table>
+                <tr>
+                    <th>Streams</th>
+                    <th>T [°C]</th>
+                    <th>P [kPa]</th>
+                </tr>
+                <tr><td>Air</td><td>25</td><td>101.3</td></tr>
+                <tr><td>Fuel</td><td>25</td><td>101.3</td></tr>
+            </table>
+        </div>
+
+        <div class="step">
+            <h4>Reactor Configuration</h4>
+            <p>Add conversion reactor and select the reaction set.</p>
+            <img src="../../../assets/che273_guide_imgs/Toluene HDA/Untitled 16.png" alt="Reactor setup">
+            <img src="../../../assets/che273_guide_imgs/Toluene HDA/Untitled 17.png" alt="Reactor reaction set">
+        </div>
+
+        <div class="step">
+            <h4>Cooler Setup</h4>
+            <p>Add cooler E-101. Set pressure drop to 30 kPa and temperature to 38°C.</p>
+            <img src="../../../assets/che273_guide_imgs/Toluene HDA/Untitled 18.png" alt="Cooler setup">
+        </div>
+
+        <div class="step">
+            <h4>Recycle Configuration</h4>
+            <p>Add separator V-101 and tee for recycle stream (98% of separator outlet gas).</p>
+            <img src="../../../assets/che273_guide_imgs/Toluene HDA/Untitled 19.png" alt="Recycle setup">
+        </div>
+
+        <div class="step">
+            <h4>Compressor Setup</h4>
+            <p>Add compressor to increase gas pressure to 25.50 bars.</p>
+            <img src="../../../assets/che273_guide_imgs/Toluene HDA/Untitled 20.png" alt="Compressor setup">
+            <img src="../../../assets/che273_guide_imgs/Toluene HDA/Untitled 21.png" alt="Compressor pressure settings">
+        </div>
+
+        <div class="step">
+            <h4>Final Recycle Setup</h4>
+            <p>Add valve VLV-100 (ΔP = 10 kPa) and configure the final recycle streams.</p>
+            <img src="../../../assets/che273_guide_imgs/Toluene HDA/Untitled 22.png" alt="Valve setup">
+            <img src="../../../assets/che273_guide_imgs/Toluene HDA/Untitled 23.png" alt="Final recycle configuration">
+        </div>
+
+        <div class="step">
+            <h4>Distillation Setup</h4>
+            <p>Add valve VLV-101 (throttle to 320 kPa) and separator V-102.</p>
+            <img src="../../../assets/che273_guide_imgs/Toluene HDA/Untitled 26.png" alt="Distillation initial setup">
+            
+            <p>Configure the shortcut column for initial estimates:</p>
+            <img src="../../../assets/che273_guide_imgs/Toluene HDA/Untitled 28.png" alt="Shortcut column">
+            <img src="../../../assets/che273_guide_imgs/Toluene HDA/Untitled 29.png" alt="Column configuration">
+        </div>
+
+        <div class="step">
+            <h4>Final Column Configuration</h4>
+            <p>Use the shortcut column results to configure the rigorous distillation column:</p>
+            <img src="../../../assets/che273_guide_imgs/Toluene HDA/Untitled 35.png" alt="Final column setup">
+            <img src="../../../assets/che273_guide_imgs/Toluene HDA/Untitled 36.png" alt="Column parameters">
+            
+            <p>Set condenser and reboiler pressures to 250 kPa and 280 kPa respectively.</p>
+            <img src="../../../assets/che273_guide_imgs/Toluene HDA/Untitled 38.png" alt="Pressure settings">
+            <img src="../../../assets/che273_guide_imgs/Toluene HDA/Untitled 39.png" alt="Temperature settings">
+            <img src="../../../assets/che273_guide_imgs/Toluene HDA/Untitled 40.png" alt="Final configuration">
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.0/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
+</body>
+</html> 

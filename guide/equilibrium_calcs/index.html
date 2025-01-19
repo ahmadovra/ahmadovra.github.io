@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Equilibrium Calculations Guide - Using Aspen Plus for Reaction System Analysis">
+    <title>Equilibrium Calculations Guide - Rashad Ahmadov</title>
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="../../../styles/animations.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.0/dist/aos.css">
+    <style>
+        .guide-content {
+            max-width: 800px;
+            margin: 120px auto 40px;
+            padding: 20px;
+            color: #fff;
+        }
+        .guide-content img {
+            max-width: 100%;
+            height: auto;
+            margin: 20px 0;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        .guide-content h1, .guide-content h2, .guide-content h3 {
+            color: #fff;
+            margin-top: 30px;
+        }
+        .guide-content p {
+            line-height: 1.6;
+            margin: 15px 0;
+        }
+        .guide-content ol, .guide-content ul {
+            margin: 15px 0;
+            padding-left: 20px;
+        }
+        .guide-content li {
+            margin: 10px 0;
+        }
+        .step {
+            margin-bottom: 40px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+        }
+        .back-to-guides {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #fff;
+            text-decoration: none;
+            padding: 8px 16px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 6px;
+            transition: background 0.3s ease;
+        }
+        .back-to-guides:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+        .note {
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.05);
+            border-left: 4px solid #4CAF50;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="guide-content">
+        <a href="../" class="back-to-guides">← Back to Guides</a>
+        
+        <h1>Equilibrium Calculations in Aspen Plus</h1>
+        
+        <p>Welcome to the Equilibrium Calculations guide! This guide will help you calculate the equilibrium of a reaction system and perform sensitivity analysis in Aspen Plus.</p>
+
+        <div class="note">
+            <p><strong>Note:</strong> The Rgibbs reactor performs equilibrium calculations by minimizing the Gibbs free energy of the system. This approach ensures accurate reaction calculations based on thermodynamic principles.</p>
+        </div>
+
+        <h2>Properties Environment Setup</h2>
+
+        <div class="step">
+            <h4>1. Component Selection</h4>
+            <p>Add all required components to your simulation environment.</p>
+            <img src="../../../assets/che273_guide_imgs/Equilibrium calcs/Untitled.png" alt="Component selection">
+        </div>
+
+        <div class="step">
+            <h4>2. Method Selection</h4>
+            <p>Select <strong>PR-BM</strong> (Peng Robinson with Boston-Mathias alpha function) as your property method. This method is chosen because:</p>
+            <ul>
+                <li>It's suitable for high-pressure simulations (60 bars in this case)</li>
+                <li>It works well with hydrocarbons and light gas mixtures</li>
+                <li>It handles both hydrocarbons and light gases like CO2 effectively</li>
+            </ul>
+            <img src="../../../assets/che273_guide_imgs/Equilibrium calcs/Untitled 1.png" alt="Method selection">
+        </div>
+
+        <div class="step">
+            <h4>3. Property Analysis</h4>
+            <p>Run the property system analysis to verify your setup.</p>
+            <img src="../../../assets/che273_guide_imgs/Equilibrium calcs/Untitled 2.png" alt="Property analysis">
+        </div>
+
+        <h2>Simulation Environment Setup</h2>
+
+        <div class="step">
+            <h4>1. Rgibbs Reactor Setup</h4>
+            <p>Add the Rgibbs reactor from the reactor tab and connect your material streams.</p>
+            <img src="../../../assets/che273_guide_imgs/Equilibrium calcs/Untitled 3.png" alt="Rgibbs reactor setup">
+        </div>
+
+        <div class="step">
+            <h4>2. Inlet Stream Configuration</h4>
+            <p>Define the inlet conditions and composition flow for your streams.</p>
+            <img src="../../../assets/che273_guide_imgs/Equilibrium calcs/Untitled 4.png" alt="Inlet configuration">
+        </div>
+
+        <div class="step">
+            <h4>3. Reactor Operating Conditions</h4>
+            <p>Set the operating conditions for your Rgibbs reactor.</p>
+            <img src="../../../assets/che273_guide_imgs/Equilibrium calcs/Untitled 5.png" alt="Operating conditions">
+        </div>
+
+        <div class="step">
+            <h4>4. Product Configuration</h4>
+            <p>Configure the products section:</p>
+            <ul>
+                <li>Select the first option to consider all components as products</li>
+                <li>If excluding CO2, use "Identify possible products"</li>
+            </ul>
+            <img src="../../../assets/che273_guide_imgs/Equilibrium calcs/Untitled 6.png" alt="Product configuration">
+        </div>
+
+        <h2>Sensitivity Analysis</h2>
+
+        <div class="step">
+            <h4>1. Model Analysis Setup</h4>
+            <p>Access the model analysis tool to create your sensitivity analysis.</p>
+            <img src="../../../assets/che273_guide_imgs/Equilibrium calcs/Untitled 7.png" alt="Model analysis">
+            <img src="../../../assets/che273_guide_imgs/Equilibrium calcs/Untitled 8.png" alt="New variable setup">
+        </div>
+
+        <div class="step">
+            <h4>2. Variable Definition</h4>
+            <p>Define the variables for your analysis:</p>
+            <ul>
+                <li>Add COin and COout for conversion calculations</li>
+                <li>Include hydrocarbon fractions to track temperature effects</li>
+            </ul>
+            <img src="../../../assets/che273_guide_imgs/Equilibrium calcs/Untitled 9.png" alt="Variable definition">
+            <img src="../../../assets/che273_guide_imgs/Equilibrium calcs/Untitled 10.png" alt="CO variables">
+            <img src="../../../assets/che273_guide_imgs/Equilibrium calcs/Untitled 11.png" alt="Hydrocarbon fractions">
+        </div>
+
+        <div class="step">
+            <h4>3. Results Configuration</h4>
+            <p>Set up the tabulation for your results:</p>
+            <ul>
+                <li>Define conversion calculation expressions</li>
+                <li>Add columns for hydrocarbon production changes</li>
+            </ul>
+            <img src="../../../assets/che273_guide_imgs/Equilibrium calcs/Untitled 12.png" alt="Results configuration">
+        </div>
+
+        <h2>Results Analysis</h2>
+
+        <div class="step">
+            <h4>1. With CO2</h4>
+            <p>View and analyze the results including CO2 in the system.</p>
+            <img src="../../../assets/che273_guide_imgs/Equilibrium calcs/Untitled 15.png" alt="Results with CO2">
+        </div>
+
+        <div class="step">
+            <h4>2. Without CO2</h4>
+            <p>For analysis without CO2:</p>
+            <ul>
+                <li>Modify Gibbs reactor products to exclude CO2</li>
+                <li>Include reactants as products to handle unreacted materials</li>
+                <li>Rerun the sensitivity analysis</li>
+            </ul>
+            <img src="../../../assets/che273_guide_imgs/Equilibrium calcs/Untitled 16.png" alt="Products without CO2">
+            <img src="../../../assets/che273_guide_imgs/Equilibrium calcs/Untitled 17.png" alt="Results without CO2">
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.0/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
+</body>
+</html> 

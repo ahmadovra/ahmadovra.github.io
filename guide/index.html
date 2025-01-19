@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Process Engineering and Simulation Guides - Rashad Ahmadov">
+    <title>Process Engineering Guides - Rashad Ahmadov</title>
+    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="../styles/animations.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.0/dist/aos.css">
+    <style>
+        .guides-content {
+            max-width: 1000px;
+            margin: 80px auto 40px;
+            padding: 20px;
+            color: #fff;
+            overflow-y: auto;
+            min-height: 0;
+            height: auto;
+        }
+        .guides-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 40px;
+            height: auto;
+            width: 100%;
+        }
+        .guide-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 20px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            height: auto;
+            display: flex;
+            flex-direction: column;
+            opacity: 1 !important;
+            transform: none !important;
+        }
+        .guide-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+        }
+        .guide-card h3 {
+            margin-top: 0;
+            color: #fff;
+        }
+        .guide-card p {
+            margin: 10px 0;
+            opacity: 0.9;
+        }
+        .guide-card a {
+            color: #fff;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 15px;
+            padding: 8px 16px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 6px;
+            transition: background 0.3s ease;
+        }
+        .guide-card a:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+        body {
+            min-height: 100vh;
+            overflow-y: auto;
+        }
+        .back-to-home {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 1000;
+        }
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            padding: 10px 20px;
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+        .back-link:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+        .back-link i {
+            margin-right: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="guides-content">
+        <h1>Process Engineering & Simulation Guides</h1>
+        <p>A collection of practical guides for chemical process engineering and simulation using Aspen HYSYS.</p>
+        
+        <div class="guides-grid">
+            <div class="guide-card">
+                <h3>Refrigeration Loop</h3>
+                <p>Learn how to simulate a refrigeration cycle in Aspen HYSYS. Perfect for beginners to understand the basics of process simulation.</p>
+                <a href="refrigeration_loop/">View Guide →</a>
+            </div>
+
+            <div class="guide-card">
+                <h3>Compressor Design</h3>
+                <p>Deep dive into compressor design principles and simulation. Learn about efficiency, pressure ratios, and performance curves.</p>
+                <a href="compressor_design/">View Guide →</a>
+            </div>
+
+            <div class="guide-card">
+                <h3>Equilibrium Calculations</h3>
+                <p>Master the fundamentals of chemical equilibrium calculations in process simulation, including vapor-liquid equilibrium.</p>
+                <a href="equilibrium_calcs/">View Guide →</a>
+            </div>
+
+            <div class="guide-card">
+                <h3>Pinch Analysis</h3>
+                <p>Learn how to perform pinch analysis for heat exchanger networks and optimize energy recovery in chemical processes.</p>
+                <a href="pinch_analysis/">View Guide →</a>
+            </div>
+
+            <div class="guide-card">
+                <h3>Toluene HDA Process</h3>
+                <p>Simulate the toluene hydrodealkylation (HDA) process, a comprehensive case study in chemical process design.</p>
+                <a href="toluene_hda/">View Guide →</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="../scripts/header-loader.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.0/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
+</body>
+</html> 
